@@ -1,11 +1,10 @@
 const Binance = require('node-binance-api');
 const TelegramBot = require('node-telegram-bot-api');
 
-
-const API_KEY = 'hefh6UXPHTcCDFc01MlIzHNKN2W1T6250X4qRL6TMCQ9Naqvzq4jH2O8I5WKLz0Y';
-const SECRET_KEY = 'oxbI34CbcUzaHwdt9PS4n2b9pEahMz9dBbZh4RDGHFW8CIJQlXh9K4gk1ae44n7M';
-const TELEGRAM_TOKEN = '8613931109:AAGg8CyHsBIRxz0_dL6ZgILojojtTV9Zkxg';
-const CHAT_ID = '6041682231';
+const API_KEY = process.env.hefh6UXPHTcCDFc01MlIzHNKN2W1T6250X4qRL6TMCQ9Naqvzq4jH2O8I5WKLz0Y;
+const SECRET_KEY = process.env.oxbI34CbcUzaHwdt9PS4n2b9pEahMz9dBbZh4RDGHFW8CIJQlXh9K4gk1ae44n7M;
+const TELEGRAM_TOKEN = process.env.8613931109:AAGg8CyHsBIRxz0_dL6ZgILojojtTV9Zkxg;
+const CHAT_ID = process.env.6041682231;
 
 const TRADE_AMOUNT_USDT = 10;
 const MAX_TRADES = 2;
@@ -28,6 +27,7 @@ const binance = new Binance().options({
   APIKEY: API_KEY,
   APISECRET: SECRET_KEY,
   useServerTime: true,
+  httpBase: 'https://api1.binance.com',
   recvWindow: 60000
 });
 
@@ -219,4 +219,10 @@ async function runBot() {
 }
 
 runBot();
+```
 
+**Ctrl+S** save karo → CMD mein:
+```
+git add .
+git commit -m "fix binance region"
+git push
